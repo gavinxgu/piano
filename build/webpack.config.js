@@ -77,7 +77,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     isDev &&
       new HtmlWebpackPlugin({
-        title: "Hot Module Replacement"
+        title: "Simple Piano"
       }),
     isDev && new webpack.HotModuleReplacementPlugin(),
     // new BundleAnalyzerPlugin()
