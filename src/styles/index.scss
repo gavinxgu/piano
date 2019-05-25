@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: "Quicksand", sans-serif;
+}
+
+#renderCanvas {
+  width: 100%;
+  height: 100%;
+  // touch-action: none;
+}
+
+#steinwayLogo-container {
+  position: absolute;
+  top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  p {
+    margin: 0;
+    color: rgba($color: #666666, $alpha: 1);
+    a {
+      text-decoration: none;
+      color: rgba($color: #222222, $alpha: 1);
+    }
+  }
+}
