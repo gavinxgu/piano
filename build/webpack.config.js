@@ -6,6 +6,8 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const webpack = require("webpack");
 
 const mode = process.env.NODE_ENV;
+// 尝试使用环境变量，否则使用根路径
+const ASSET_PATH = process.env.ASSET_PATH || "/";
 const isDev = mode !== "production";
 
 module.exports = {
@@ -47,7 +49,9 @@ module.exports = {
         use: [
           {
             loader: "file-loader",
-            options: {}
+            options: {
+              publicPath: ASSET_PATH
+            }
           }
         ]
       },
@@ -57,8 +61,9 @@ module.exports = {
           {
             loader: "file-loader",
             options: {
-              outputPath: "audios",
-              name: "[path][name].[ext]"
+              publicPath: ASSET_PATH + "audio",
+              outputPath: "audio"
+              // name: "[path][name].[ext]"
             }
           }
         ]
@@ -79,12 +84,13 @@ module.exports = {
       new HtmlWebpackPlugin({
         title: "Simple Piano"
       }),
-    isDev && new webpack.HotModuleReplacementPlugin(),
+    isDev && new webpack.HotModuleReplacementPlugin()
     // new BundleAnalyzerPlugin()
   ],
   output: {
     filename: "[name].bundle.js",
     chunkFilename: "[name].bundle.js",
-    path: path.resolve(__dirname, "../dist")
+    path: path.resolve(__dirname, "../dist"),
+    publicPath: ASSET_PATH
   }
 };

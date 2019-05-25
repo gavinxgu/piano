@@ -1,5 +1,5 @@
 import { AssetsManager, Color4, Engine, FreeCamera, HemisphericLight, Light, Scene, Vector3 } from "babylonjs";
-import { BLACK_KEY_ATTR, BLACK_KEYS, Key, pitchNames, WHITE_KEY_ATTR } from "./key";
+import { BLACK_KEY_ATTR, BLACK_KEYS, Key, pitchMap, pitchNames, WHITE_KEY_ATTR } from "./key";
 import { MyLoadingScreen } from "./loadingScreen";
 import { MouseEventCounter } from "./mouseEventCounter";
 
@@ -87,7 +87,7 @@ export class Piano {
   public loadAssets() {
     const assetsManager = new AssetsManager(this._scene);
     pitchNames.forEach((name) => {
-      assetsManager.addBinaryFileTask(name, `/audios/sounds/uiowa.music/output/ff.${name}.mp3`);
+      assetsManager.addBinaryFileTask(name, pitchMap[name]);
     });
 
     assetsManager.load();
