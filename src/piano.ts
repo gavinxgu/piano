@@ -1,5 +1,6 @@
-import { Color4, Engine, FreeCamera, HemisphericLight, Light, Scene, Vector3 } from "babylonjs";
-import { BLACK_KEY_ATTR, BLACK_KEYS, Key, WHITE_KEY_ATTR } from "./key";
+import { AssetsManager, Color4, Engine, FreeCamera, HemisphericLight, Light, Scene, Vector3 } from "babylonjs";
+import { BLACK_KEY_ATTR, BLACK_KEYS, Key, pitchNames, WHITE_KEY_ATTR } from "./key";
+import { MyLoadingScreen } from "./loadingScreen";
 import { MouseEventCounter } from "./mouseEventCounter";
 
 export class Piano {
@@ -14,6 +15,7 @@ export class Piano {
     // Create canvas and engine.
     this._canvas = canvas;
     this._engine = new Engine(this._canvas, true, undefined, true);
+    this._engine.loadingScreen = new MyLoadingScreen();
     // Create a basic BJS Scene object.
     this._scene = new Scene(this._engine);
     this._scene.clearColor = new Color4(0.8, 0.8, 0.8);
@@ -80,6 +82,24 @@ export class Piano {
 
   public createScene(): void {
     this.createKeys();
+  }
+
+  public loadAssets() {
+    const assetsManager = new AssetsManager(this._scene);
+    pitchNames.forEach((name) => {
+      assetsManager.addBinaryFileTask(name, `/audios/sounds/uiowa.music/output/ff.${name}.mp3`);
+    });
+
+    assetsManager.load();
+
+    assetsManager.onProgress = (remainingCount, totalCount, lastFinishedTask) => {
+      this._engine.loadingUIText = "We are loading the scene. " + (totalCount - remainingCount) + " of " + totalCount + " items has been loaded.";
+    };
+
+    assetsManager.onFinish = (tasks) => {
+      this.doRender();
+    };
+
   }
 
   public doRender(): void {

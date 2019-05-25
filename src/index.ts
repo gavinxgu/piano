@@ -42,7 +42,7 @@ window.addEventListener("DOMContentLoaded", () => {
   piano.createScene();
 
   // Start render loop.
-  piano.doRender();
+  piano.loadAssets();
 
   if (module.hot) {
     module.hot.accept("./piano.ts", () => {

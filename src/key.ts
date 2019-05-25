@@ -92,7 +92,7 @@ import Gb7 from "../sounds/uiowa.music/output/ff.Gb7.mp3";
 
 import { MouseEventCounter } from "./mouseEventCounter";
 
-const pitchNames = ["A0", "Bb0", "B0",
+export const pitchNames = ["A0", "Bb0", "B0",
     "C1", "Db1", "D1", "Eb1", "E1", "F1", "Gb1", "G1", "Ab1", "A1", "Bb1", "B1",
     "C2", "Db2", "D2", "Eb2", "E2", "F2", "Gb2", "G2", "Ab2", "A2", "Bb2", "B2",
     "C3", "Db3", "D3", "Eb3", "E3", "F3", "Gb3", "G3", "Ab3", "A3", "Bb3", "B3",
