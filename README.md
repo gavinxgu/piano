@@ -5,3 +5,9 @@ a web simple piano made by <a href='https://github.com/gavinxgu' target="_blank"
 ## What is it like?
 
 <img src="/doc/preview.png" />
+
+## Play Simple Piano With Keyboard
+
+The keyboard interaction is same as Logic Pro.
+
+<img src="/doc/keyboardInteraction.png" />

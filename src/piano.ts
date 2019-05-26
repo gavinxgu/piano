@@ -3,7 +3,51 @@ import { BLACK_KEY_ATTR, BLACK_KEYS, Key, pitchMap, pitchNames, WHITE_KEY_ATTR }
 import { MyLoadingScreen } from "./loadingScreen";
 import { MouseEventCounter } from "./mouseEventCounter";
 
+export const keyboardController = (piano: Piano, offset = 3) => {
+  const pianoKeyPressLocks = new Map<number, boolean>();
+  const pianokeyMap = piano.keys;
+  const pcKeyPianoKeyMap: { [key: string]: number } = { "a": 3, "w": 4, "s": 5, "e": 6, "d": 7, "f": 8, "t": 9, "g": 10, "y": 11, "h": 12, "u": 13, "j": 14, "k": 15, "o": 16, "l": 17, "p": 18, ";": 19, "'": 20 };
+  // 初始化按键锁
+  for (const [index] of pianokeyMap) {
+    pianoKeyPressLocks.set(index, false);
+  }
+
+  const keydownHandler = (e: KeyboardEvent) => {
+    const keyIndex = pcKeyPianoKeyMap[e.key] + offset * 12;
+    // 如果keyIndex存在并且没有按下
+    if (keyIndex && pianoKeyPressLocks.get(keyIndex) === false) {
+      pianoKeyPressLocks.set(keyIndex, true);
+      const key = pianokeyMap.get(keyIndex);
+      if (key) {
+        key.press();
+      }
+    }
+  };
+
+  const keyupHandler = (e: KeyboardEvent) => {
+    const keyIndex = pcKeyPianoKeyMap[e.key] + offset * 12;
+    // 如果keyIndex存在并且没有按下
+    if (keyIndex) {
+      pianoKeyPressLocks.set(keyIndex, false);
+      const key = pianokeyMap.get(keyIndex);
+      if (key) {
+        key.release();
+      }
+    }
+  };
+
+  window.addEventListener("keydown", keydownHandler);
+  window.addEventListener("keyup", keyupHandler);
+
+  return () => {
+    // 移除监听
+    window.removeEventListener("keydown", keydownHandler);
+    window.removeEventListener("keyup", keyupHandler);
+  };
+};
+
 export class Piano {
+  public keys: Map<number, Key>;
   private _canvas: HTMLCanvasElement;
   private _engine: Engine;
   private _scene: Scene;
@@ -12,6 +56,7 @@ export class Piano {
   private _mouseEventCounter: MouseEventCounter;
 
   constructor(canvas: HTMLCanvasElement) {
+    this.keys = new Map<number, Key>();
     // Create canvas and engine.
     this._canvas = canvas;
     this._engine = new Engine(this._canvas, true, undefined, true);
@@ -33,8 +78,6 @@ export class Piano {
   }
 
   public createKeys() {
-
-    const keyMap = new Map<number, Key>();
     let currentKey = null;
 
     for (let i = 0; i < 88; i++) {
@@ -53,8 +96,8 @@ export class Piano {
       }
 
       const isBlack = BLACK_KEYS.includes(currentKey.key);
-      keyMap.set(i, currentKey);
-      const preKey = keyMap.get(i - 1);
+      this.keys.set(i, currentKey);
+      const preKey = this.keys.get(i - 1);
       const padding = 0.1;
 
       if (preKey) {

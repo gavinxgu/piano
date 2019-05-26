@@ -1,5 +1,5 @@
 import logo from "./assets/SteinwayLogo.svg";
-import { Piano } from "./piano";
+import { keyboardController, Piano } from "./piano";
 import "./styles/index.scss";
 
 // 添加字体
@@ -40,7 +40,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Create the scene.
   piano.createScene();
-
+  keyboardController(piano);
   // Start render loop.
   piano.loadAssets();
 
