@@ -39,10 +39,6 @@ window.addEventListener("DOMContentLoaded", () => {
   // Create the game using the 'renderCanvas'.
   let piano = new Piano(canvas);
 
-  // Create the scene.
-  piano.createScene();
-  keyboardController(piano);
-
   // 添加播放预设音乐按钮
   const btnContainer = document.createElement("div");
   btnContainer.id = "btnContainer";
@@ -63,6 +59,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Start render loop.
   piano.loadAssets();
+
+  // Create the scene.
+  piano.createScene();
+  keyboardController(piano);
 
   if (module.hot) {
     module.hot.accept("./piano.ts", () => {

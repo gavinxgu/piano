@@ -82,7 +82,9 @@ export class Piano {
     // Create canvas and engine.
     this._canvas = canvas;
     this._engine = new Engine(this._canvas, true, undefined, true);
-    this._engine.loadingScreen = new MyLoadingScreen();
+    this._engine.loadingScreen = new MyLoadingScreen(() => {
+      this.doRender();
+    });
     // Create a basic BJS Scene object.
     this._scene = new Scene(this._engine);
     this._scene.clearColor = new Color4(0.8, 0.8, 0.8);
@@ -162,7 +164,7 @@ export class Piano {
     };
 
     assetsManager.onFinish = (tasks) => {
-      this.doRender();
+      // this.doRender();
     };
 
   }

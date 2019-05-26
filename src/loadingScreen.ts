@@ -8,7 +8,7 @@ export class MyLoadingScreen implements ILoadingScreen {
     private _spin: HTMLImageElement;
     private _text: HTMLParagraphElement;
     private _loading: boolean;
-    constructor() {
+    constructor(public onFinish: () => void) {
         this.loadingUIBackgroundColor = "";
         this._overlay = document.createElement("div");
         this._overlay.id = "loadingOverlay";
@@ -25,9 +25,9 @@ export class MyLoadingScreen implements ILoadingScreen {
                 // 这个trick用来解除: The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://goo.gl/7K7WLu
                 const context = new AudioContext();
                 context.resume().then(() => {
-                    console.log('Playback resumed successfully');
+                    document.body.removeChild(this._overlay);
+                    this.onFinish();
                 });
-                document.body.removeChild(this._overlay);
             }
         });
         this._loading = false;
