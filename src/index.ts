@@ -2,6 +2,7 @@ import logo from "./assets/SteinwayLogo.svg";
 import { autoSheetPlayer, keyboardController, Piano } from "./piano";
 import lalaland from "./sheets/lalaland";
 import "./styles/index.scss";
+// import screenfull from "screenfull";
 
 // 添加字体
 // <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">

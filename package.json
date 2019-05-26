@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "babylonjs": "^4.0.3",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "screenfull": "^4.2.0"
   }
 }

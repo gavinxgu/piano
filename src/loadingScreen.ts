@@ -1,4 +1,5 @@
 import { ILoadingScreen } from "babylonjs";
+import screenfull from "screenfull";
 import spin from "./assets/spin.svg";
 
 export class MyLoadingScreen implements ILoadingScreen {
@@ -25,6 +26,9 @@ export class MyLoadingScreen implements ILoadingScreen {
                 // 这个trick用来解除: The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://goo.gl/7K7WLu
                 const context = new AudioContext();
                 context.resume().then(() => {
+                    if (screenfull && screenfull.enabled) {
+                        screenfull.request();
+                    }
                     document.body.removeChild(this._overlay);
                     this.onFinish();
                 });
