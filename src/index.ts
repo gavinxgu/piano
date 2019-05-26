@@ -61,7 +61,6 @@ window.addEventListener("DOMContentLoaded", () => {
   piano.loadAssets();
 
   // Create the scene.
-  piano.createScene();
   keyboardController(piano);
 
   if (module.hot) {
@@ -69,8 +68,6 @@ window.addEventListener("DOMContentLoaded", () => {
       // tslint:disable-next-line: no-console
       console.log("Accepting the updated piano module!");
       piano = new Piano(canvas);
-      // Create the scene.
-      piano.createScene();
       // Start render loop.
       piano.doRender();
     });

@@ -170,6 +170,7 @@ export class Piano {
   }
 
   public doRender(): void {
+    this.createScene();
     // Run the render loop.
     this._engine.runRenderLoop(() => {
       this._scene.render();
