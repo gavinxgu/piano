@@ -1,5 +1,6 @@
 import logo from "./assets/SteinwayLogo.svg";
-import { keyboardController, Piano } from "./piano";
+import { autoSheetPlayer, keyboardController, Piano } from "./piano";
+import lalaland from "./sheets/lalaland";
 import "./styles/index.scss";
 
 // 添加字体
@@ -41,6 +42,25 @@ window.addEventListener("DOMContentLoaded", () => {
   // Create the scene.
   piano.createScene();
   keyboardController(piano);
+
+  // 添加播放预设音乐按钮
+  const btnContainer = document.createElement("div");
+  btnContainer.id = "btnContainer";
+  const sheetsTitle = document.createElement("p");
+  sheetsTitle.id = "sheetsTitle";
+  sheetsTitle.innerText = "Sample Sheets";
+  const lalalandBtn = document.createElement("div");
+  lalalandBtn.id = "lalaland";
+  lalalandBtn.className = "sheetBtn";
+  lalalandBtn.innerText = "La La Land";
+  lalalandBtn.addEventListener("click", () => {
+    autoSheetPlayer(piano, lalaland);
+  });
+
+  btnContainer.appendChild(sheetsTitle);
+  btnContainer.appendChild(lalalandBtn);
+  document.body.appendChild(btnContainer);
+
   // Start render loop.
   piano.loadAssets();
 

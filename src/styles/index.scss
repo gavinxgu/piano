@@ -35,7 +35,31 @@ body {
   }
 }
 
+#btnContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0 0 10px;
+  #sheetsTitle {
+    font-size: 14px;
+    margin: 0;
+  }
+  .sheetBtn {
+    border-radius: 2px;
+    border: solid 1px #222222;
+    cursor: pointer;
+    padding: 2px 4px;
+    background: rgba($color: white, $alpha: 0.7);
+    color: #666666;
+
+    &:hover {
+      background: white;
+    }
+  }
+}
+
 #loadingOverlay {
+  cursor: pointer;
   position: absolute;
   top: 0;
   bottom: 0;
