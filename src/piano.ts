@@ -171,6 +171,8 @@ export class Piano {
 
   public doRender(): void {
     this.createScene();
+    // Create the scene.
+    keyboardController(this);
     // Run the render loop.
     this._engine.runRenderLoop(() => {
       this._scene.render();

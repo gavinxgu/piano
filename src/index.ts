@@ -61,9 +61,6 @@ window.addEventListener("DOMContentLoaded", () => {
   // Start render loop.
   piano.loadAssets();
 
-  // Create the scene.
-  keyboardController(piano);
-
   if (module.hot) {
     module.hot.accept("./piano.ts", () => {
       // tslint:disable-next-line: no-console
