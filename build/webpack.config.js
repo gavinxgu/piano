@@ -89,8 +89,8 @@ module.exports = {
     // new BundleAnalyzerPlugin()
   ],
   output: {
-    filename: "[name].bundle.js",
-    chunkFilename: "[name].bundle.js",
+    filename: "[name].[hash].js",
+    chunkFilename: "[name].[hash].js",
     path: path.resolve(__dirname, "../dist"),
     publicPath: ASSET_PATH
   }

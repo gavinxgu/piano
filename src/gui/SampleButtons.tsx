@@ -43,9 +43,9 @@ export class SampleButtons extends React.Component {
                 <SheetButton text={"City Of Stars"} midiURL={CityOfStarsMidi} />
                 {/* <SheetButton text={"A Lovely Night"} midiURL={ALovelyNightMidi} /> */}
                 <div style={{ display: "flex" }}>
-                    <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} className="sheetBtn" onClick={player.play}><div className="triangle" /></div>
-                    <div className="sheetBtn" onClick={player.resume}> | | </div>
-                    <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} className="sheetBtn" onClick={player.stop}><div className="box" /></div>
+                    <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} className="sheetBtn" onClick={() => { player.play(); }}><div className="triangle" /></div>
+                    <div className="sheetBtn" onClick={() => { player.resume(); }}> | | </div>
+                    <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} className="sheetBtn" onClick={() => { player.stop(); }}><div className="box" /></div>
                 </div>
             </div>
         );
