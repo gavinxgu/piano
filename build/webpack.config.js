@@ -13,7 +13,7 @@ const isDev = mode !== "production";
 module.exports = {
   mode,
   entry: {
-    app: "./src/index.ts"
+    app: "./src/index.tsx"
   },
   devtool: "cheap-module-source-map",
   module: {
@@ -23,7 +23,7 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         loader: "babel-loader",
         options: {
-          presets: ["@babel/preset-typescript"]
+          presets: ["@babel/preset-react", "@babel/preset-typescript"]
         }
       },
       {
@@ -56,7 +56,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(aiff|mp3|wav)$/,
+        test: /\.(aiff|mp3|wav|mid)$/,
         use: [
           {
             loader: "file-loader",
@@ -82,7 +82,8 @@ module.exports = {
     new CleanWebpackPlugin(),
     isDev &&
       new HtmlWebpackPlugin({
-        title: "Simple Piano"
+        inject: true,
+        template: path.join(__dirname, "../public/index.html")
       }),
     isDev && new webpack.HotModuleReplacementPlugin()
     // new BundleAnalyzerPlugin()

@@ -7,11 +7,13 @@
   "scripts": {
     "build": "webpack --mode=production --config build/webpack.config.js",
     "build-oss": "cross-env ASSET_PATH=//static.gavingu.cn/piano.meox.com.cn/ webpack --mode=production --config build/webpack.config.js",
+    "lint": "tslint ./src/**/*.ts ./src/**/*.tsx",
     "dev": "node build/dev-server.js"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
     "@types/lodash": "^4.14.130",
     "@types/webpack-env": "^1.13.9",
@@ -26,6 +28,7 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "tslint": "^5.16.0",
+    "tslint-react": "^4.0.0",
     "typescript": "^3.4.5",
     "urllib": "^2.34.0",
     "webpack": "^4.32.2",
@@ -34,8 +37,13 @@
     "webpack-dev-server": "^3.4.1"
   },
   "dependencies": {
+    "@tonejs/midi": "^2.0.0",
+    "@types/react": "^16.8.19",
+    "@types/react-dom": "^16.8.4",
     "babylonjs": "^4.0.3",
     "lodash": "^4.17.11",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "screenfull": "^4.2.0"
   }
 }

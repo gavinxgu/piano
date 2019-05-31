@@ -1,4 +1,3 @@
-
 interface ISheet {
     title: string;
     timeSignature: [number, number];

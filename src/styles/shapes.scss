@@ -1,0 +1,15 @@
+.triangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0.5em 0 0.5em 1em;
+  border-color: transparent transparent transparent #666666;
+}
+
+.box {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0.5em 0.5em 0.5em 0.5em;
+  border-color: #666666;
+}

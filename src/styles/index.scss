@@ -1,7 +1,22 @@
+@import "./shapes.scss";
+
 body {
   margin: 0;
   overflow: hidden;
   font-family: "Quicksand", sans-serif;
+}
+
+#app {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+
+  & > * {
+    pointer-events: auto;
+  }
 }
 
 #renderCanvas {
@@ -45,6 +60,8 @@ body {
     margin: 0;
   }
   .sheetBtn {
+    text-align: center;
+    margin-top: 2px;
     border-radius: 2px;
     border: solid 1px #222222;
     cursor: pointer;
@@ -70,9 +87,4 @@ body {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  #loadingSpin {
-  }
-
-  #loadingText {
-  }
 }

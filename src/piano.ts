@@ -1,29 +1,8 @@
+import { Midi } from "@tonejs/midi";
 import { AssetsManager, Color4, Engine, FreeCamera, HemisphericLight, Light, Scene, Vector3 } from "babylonjs";
 import { BLACK_KEY_ATTR, BLACK_KEYS, Key, pitchMap, pitchNames, WHITE_KEY_ATTR } from "./key";
 import { MyLoadingScreen } from "./loadingScreen";
 import { MouseEventCounter } from "./mouseEventCounter";
-
-export const autoSheetPlayer = (piano: Piano, sheet: ISheet, offset: number = 0) => {
-  const pianokeyMap = piano.keys;
-  const speed = 700;
-  sheet.tracks.forEach((track) => {
-    let currentTime = 0;
-    track.sheet.forEach((note) => {
-      if (note.start + currentTime - offset >= 0) {
-        setTimeout(() => {
-          const key = pianokeyMap.get(note.index);
-          if (key) {
-            key.press();
-            setTimeout(() => {
-              key.release();
-            }, note.note * speed);
-          }
-        }, (note.start + currentTime - offset) * speed);
-      }
-      currentTime += note.start + note.note;
-    });
-  });
-};
 
 export const keyboardController = (piano: Piano, offset = 3) => {
   const pianoKeyPressLocks = new Map<number, boolean>();

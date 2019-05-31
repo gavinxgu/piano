@@ -1,4 +1,4 @@
-import { ActionManager, Color4, ExecuteCodeAction, Mesh, MeshBuilder, Scene, Sound } from "babylonjs";
+import { ActionManager, Color4, ExecuteCodeAction, Mesh, MeshBuilder, Scene, Sound, StandardMaterial } from "babylonjs";
 // import { ActionManager } from "babylonjs/Actions/actionManager";
 // console.log(pitchNames.map((name) => `import ${name} from "../sounds/uiowa.music/output/ff.${name}.mp3";`).join("\n"))
 import A0 from "../sounds/uiowa.music/output/ff.A0.mp3";
@@ -160,6 +160,7 @@ export class Key {
         width: number,
     };
     private _sound: Sound;
+    private _scene: Scene;
 
     constructor(options: ICreateKeyOptions, scene: Scene, mouseEventCounter: MouseEventCounter) {
         const isBlack = BLACK_KEYS.includes(options.key);
@@ -171,6 +172,7 @@ export class Key {
         this.size = isBlack ? this.size = { ...BLACK_KEY_ATTR } : this.size = { ...WHITE_KEY_ATTR };
 
         this._sound = new Sound(pitchNames[this.index], pitchMap[pitchNames[this.index]], scene);
+        this._scene = scene;
         // 绑定事件
         this.mesh.actionManager = new ActionManager(scene);
         this.mesh.actionManager.registerAction(
@@ -230,10 +232,17 @@ export class Key {
 
     public press() {
         this.mesh.position.y = -0.3;
+        const myMaterial = new StandardMaterial("myMaterial", this._scene);
+
+        myMaterial.diffuseColor = new BABYLON.Color3(1, 0, 1);
+        myMaterial.specularColor = new BABYLON.Color3(0.5, 0.6, 0.87);
+        myMaterial.emissiveColor = new BABYLON.Color3(0.6, 0.6, 0.6);
+        this.mesh.material = myMaterial;
         this._sound.play();
     }
 
     public release() {
         this.mesh.position.y = 0;
+        this.mesh.material = null;
     }
 }
