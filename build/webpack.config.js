@@ -86,12 +86,17 @@ module.exports = {
         template: path.join(__dirname, "../public/index.html")
       }),
     isDev && new webpack.HotModuleReplacementPlugin()
-    // new BundleAnalyzerPlugin()
+    // ,new BundleAnalyzerPlugin()
   ],
   output: {
     filename: "[name].[hash].js",
     chunkFilename: "[name].[hash].js",
     path: path.resolve(__dirname, "../dist"),
     publicPath: ASSET_PATH
+  },
+  optimization: {
+    splitChunks: {
+      chunks: "all"
+    }
   }
 };

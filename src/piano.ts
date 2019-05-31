@@ -1,5 +1,11 @@
-import { Midi } from "@tonejs/midi";
-import { AssetsManager, Color4, Engine, FreeCamera, HemisphericLight, Light, Scene, Vector3 } from "babylonjs";
+import { FreeCamera } from "@babylonjs/core/Cameras/freeCamera";
+import { Engine } from "@babylonjs/core/Engines/engine";
+import { HemisphericLight } from "@babylonjs/core/Lights/hemisphericLight";
+import { Light } from "@babylonjs/core/Lights/light";
+import { Color4, Vector3 } from "@babylonjs/core/Maths";
+import { AssetsManager } from "@babylonjs/core/Misc/assetsManager";
+import { Scene } from "@babylonjs/core/scene";
+
 import { BLACK_KEY_ATTR, BLACK_KEYS, Key, pitchMap, pitchNames, WHITE_KEY_ATTR } from "./key";
 import { MyLoadingScreen } from "./loadingScreen";
 import { MouseEventCounter } from "./mouseEventCounter";

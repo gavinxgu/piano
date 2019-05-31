@@ -1,4 +1,4 @@
-import { ILoadingScreen } from "babylonjs";
+import { ILoadingScreen } from "@babylonjs/core/Loading";
 import screenfull from "screenfull";
 import spin from "./assets/spin.svg";
 

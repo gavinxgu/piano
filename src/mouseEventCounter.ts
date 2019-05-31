@@ -1,10 +1,11 @@
-import * as BABYLON from "babylonjs";
+import { PointerEventTypes } from "@babylonjs/core/Events/pointerEvents";
+import { Scene } from "@babylonjs/core/scene";
 
 export class MouseEventCounter {
     public leftButton: boolean;
     public rightButton: boolean;
     public centerButton: boolean;
-    constructor(scene: BABYLON.Scene) {
+    constructor(scene: Scene) {
         this.leftButton = false;
         this.rightButton = false;
         this.centerButton = false;
@@ -19,7 +20,7 @@ export class MouseEventCounter {
                 case 2:
                     this.rightButton = true;
             }
-        }, BABYLON.PointerEventTypes.POINTERDOWN, false);
+        }, PointerEventTypes.POINTERDOWN, false);
 
         scene.onPrePointerObservable.add((pointerInfo, eventState) => {
             switch (pointerInfo.event.button) {
@@ -31,6 +32,6 @@ export class MouseEventCounter {
                 case 2:
                     this.rightButton = false;
             }
-        }, BABYLON.PointerEventTypes.POINTERUP, false);
+        }, PointerEventTypes.POINTERUP, false);
     }
 }

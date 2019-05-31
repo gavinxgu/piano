@@ -1,5 +1,12 @@
-import { ActionManager, Color4, ExecuteCodeAction, Mesh, MeshBuilder, Scene, Sound, StandardMaterial } from "babylonjs";
-// import { ActionManager } from "babylonjs/Actions/actionManager";
+import { ActionManager } from "@babylonjs/core/Actions/actionManager";
+import { ExecuteCodeAction } from "@babylonjs/core/Actions/directActions";
+import { Sound } from "@babylonjs/core/Audio/sound";
+import { StandardMaterial } from "@babylonjs/core/Materials/standardMaterial";
+import { Color3, Color4 } from "@babylonjs/core/Maths";
+import { Mesh } from "@babylonjs/core/Meshes/mesh";
+import { MeshBuilder } from "@babylonjs/core/Meshes/meshBuilder";
+import { Scene } from "@babylonjs/core/scene";
+
 // console.log(pitchNames.map((name) => `import ${name} from "../sounds/uiowa.music/output/ff.${name}.mp3";`).join("\n"))
 import A0 from "../sounds/uiowa.music/output/ff.A0.mp3";
 import A1 from "../sounds/uiowa.music/output/ff.A1.mp3";
@@ -234,9 +241,9 @@ export class Key {
         this.mesh.position.y = -0.3;
         const myMaterial = new StandardMaterial("myMaterial", this._scene);
 
-        myMaterial.diffuseColor = new BABYLON.Color3(1, 0, 1);
-        myMaterial.specularColor = new BABYLON.Color3(0.5, 0.6, 0.87);
-        myMaterial.emissiveColor = new BABYLON.Color3(0.6, 0.6, 0.6);
+        myMaterial.diffuseColor = new Color3(1, 0, 1);
+        myMaterial.specularColor = new Color3(0.5, 0.6, 0.87);
+        myMaterial.emissiveColor = new Color3(0.6, 0.6, 0.6);
         this.mesh.material = myMaterial;
         this._sound.play();
     }
