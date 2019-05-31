@@ -7,6 +7,9 @@ import { Mesh } from "@babylonjs/core/Meshes/mesh";
 import { MeshBuilder } from "@babylonjs/core/Meshes/meshBuilder";
 import { Scene } from "@babylonjs/core/scene";
 
+import "@babylonjs/core/Audio/audioEngine";
+import "@babylonjs/core/Audio/audioSceneComponent";
+
 // console.log(pitchNames.map((name) => `import ${name} from "../sounds/uiowa.music/output/ff.${name}.mp3";`).join("\n"))
 import A0 from "../sounds/uiowa.music/output/ff.A0.mp3";
 import A1 from "../sounds/uiowa.music/output/ff.A1.mp3";
