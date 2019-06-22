@@ -1,11 +1,11 @@
 stages:
-- name: compile
-  steps:
-  - publishImageConfig:
-      dockerfilePath: ./Dockerfile
-      buildContext: .
-      tag: gavinxgu:piano
-      pushRemote: true
-      registry: index.docker.io
+  - name: compile
+    steps:
+      - publishImageConfig:
+          dockerfilePath: ./Dockerfile
+          buildContext: .
+          tag: gavinxgu/piano:latest
+          pushRemote: true
+          registry: index.docker.io
 timeout: 60
 notification: {}
