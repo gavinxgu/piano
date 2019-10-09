@@ -28,7 +28,7 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "tslint": "^5.16.0",
-    "tslint-react": "^4.0.0",
+    "tslint-react": "^4.1.0",
     "typescript": "^3.4.5",
     "urllib": "^2.34.1",
     "webpack": "^4.32.2",
