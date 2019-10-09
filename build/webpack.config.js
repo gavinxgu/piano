@@ -1,6 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 // const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 //   .BundleAnalyzerPlugin;
 const webpack = require("webpack");
@@ -81,10 +81,10 @@ module.exports = {
     // new CleanWebpackPlugin(['dist/*']) for < v2 versions of CleanWebpackPlugin
     new CleanWebpackPlugin(),
     isDev &&
-      new HtmlWebpackPlugin({
-        inject: true,
-        template: path.join(__dirname, "../public/index.html")
-      }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.join(__dirname, "../public/index.html")
+    }),
     isDev && new webpack.HotModuleReplacementPlugin()
     // ,new BundleAnalyzerPlugin()
   ],
