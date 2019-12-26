@@ -33,7 +33,7 @@
     "urllib": "^2.34.1",
     "webpack": "^4.41.0",
     "webpack-bundle-analyzer": "^3.3.2",
-    "webpack-cli": "^3.3.2",
+    "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.8.2"
   },
   "dependencies": {
