@@ -15,7 +15,7 @@
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.6.3",
     "@babel/preset-typescript": "^7.6.0",
-    "@types/lodash": "^4.14.144",
+    "@types/lodash": "^4.14.172",
     "@types/webpack-env": "^1.14.0",
     "babel-loader": "^8.0.6",
     "cheerio": "^1.0.0-rc.3",
